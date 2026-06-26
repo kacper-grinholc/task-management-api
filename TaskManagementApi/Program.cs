@@ -5,9 +5,8 @@ using TaskManagementApi.Services;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING")
-    ?? builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? throw new InvalidOperationException("DATABASE_CONNECTION_STRING is not set.");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("DefaultConnection is not set.");
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
